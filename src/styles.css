@@ -2,10 +2,28 @@
 	box-sizing: border-box;
 	margin: 0;
 }
-body, html{
-	margin:0;
-	padding:0;
-  }
+
+/*############### NAVABAR ###########*/
+
+.navbar {
+	height:50px;
+	width:100%;
+	background:#222;
+	margin-bottom: 10px;
+	align-items: center;
+	padding:20px;
+}
+
+
+.navbar a {
+	width:100%;
+	color: #fff;
+	text-decoration: none;
+}
+
+
+
+
 
 
 .card {

@@ -6,16 +6,32 @@ import express from 'express';
 import ReactDOMServer from 'react-dom/server';
 import getProducts from '../api/getProducts';
 import App from '../src/App';
+import Post from '../src/components/Post';
+import { StaticRouter } from 'react-router-dom';
+
+import {matchPath} from 'react-router-dom';
+import routes from '../routes/routes';
 
 const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.get('/', (req, res) => {
-
 	getProducts()
 	.then (posts => {
-	const app = ReactDOMServer.renderToString(<App posts={posts} />);
+		const context ={};
+		const app = ReactDOMServer.renderToString(
+		<StaticRouter location={req.url} context={context}>
+			<App posts={posts} />
+		</StaticRouter>
+	);
+
+	if(context.url)
+	{ redirect(req.url)
+	}
+
+	else{
 	const indexFile = path.resolve('./build/index.html');
+
 	fs.readFile(indexFile, 'utf8', (err, data) => {
 		if (err) {
 		 console.error('Something went wrong:', err);
@@ -26,6 +42,7 @@ app.get('/', (req, res) => {
 			data.replace('<div id="root"></div>',`<div id="root">${app}</div>`)
 		);
 	});
+	}
 	})
 });
 
