@@ -1,13 +1,21 @@
 import React from 'react';
+import ReactHtmlParser from 'react-html-parser';
 
 const App = ({posts}) =>{
-	console.log(posts[0])
+
+	console.log(posts[0]);
 	return(
-		<div>
-		<img src="https://mario.nintendo.com/static/746e0151f4a36a19a96198bd2d92d8d6/slide-pmok-0.png" />
+		<div className="posts">
 			{ posts? posts.map(post => (
-				<div key={post.id}>
-					<h1>{post.title.rendered}</h1>
+				<div className="card" key={post.id}>
+					<img
+					src={post["_embedded"]["wp:featuredmedia"][0]["source_url"]}
+					className="card__image"
+					 alt="Avatar"/>
+					<div className="container">
+						<h4><b>{ReactHtmlParser(post.title.rendered)}</b></h4>
+						{ReactHtmlParser(post.excerpt.rendered)}
+					</div>
 				</div>
 			)) : <h1>Loading</h1> }
 		</div>
