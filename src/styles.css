@@ -11,20 +11,45 @@
 	background:#222;
 	margin-bottom: 10px;
 	align-items: center;
-	padding:20px;
+	padding:12px;
+	position:sticky;
 }
 
 
 .navbar a {
 	width:100%;
 	color: #fff;
+	font-family: "Monospace";
+	font-size: 25px;
 	text-decoration: none;
 }
 
+/*############### CATEGORIES FILTER ###########*/
+
+.categories__filter {
+	display: flex;
+	max-width: 1440px;
+	margin: auto;
+	flex-wrap: wrap;
+}
+
+.category{
+	margin-right: 20px;
+	margin-bottom: 10px;
+	border: 1px solid #222;
+	padding: 5px;
+	border-radius:50px;
+}
+
+.category input[type="checkbox"]{
+	margin-right: 5px;
+}
 
 
-
-
+.post{
+	max-width:1440px;
+	margin:auto;
+}
 
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
