@@ -11,7 +11,7 @@ const Posts = ({posts}) =>{
 					<img
 					src={post["_embedded"]["wp:featuredmedia"][0]["source_url"]}
 					className="card__image"
-					 alt="Avatar"/>
+					 alt="Image"/>
 					<div className="container">
 						<h4><b>{ReactHtmlParser(post.title.rendered)}</b></h4>
 						{ReactHtmlParser(post.excerpt.rendered)}

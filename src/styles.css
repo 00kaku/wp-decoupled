@@ -142,7 +142,35 @@
 
 
 /*############### POSTS GRID ###########*/
-.post{
-	max-width:1440px;
+.posts{
+	max-width: 1440px;
 	margin:auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	column-gap: 5px;
 }
+
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	padding: 1rem;
+  }
+
+  .card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  .container {
+	padding: 2px 16px;
+  }
+  .container h4{
+	  border-bottom: 1px solid #222;
+	  padding-bottom: 5px;
+	  margin-bottom:5px;
+ }
+
+ .container p{
+	color:gray;
+	margin-bottom: 5px;
+}
+  .card__image{
+	  max-width: 100%;
+  }
