@@ -15,7 +15,7 @@ const Posts = ({posts}) =>{
 					<div className="container">
 						<h4><b>{ReactHtmlParser(post.title.rendered)}</b></h4>
 						{ReactHtmlParser(post.excerpt.rendered)}
-						<button><Link to={`/post/${post.id}`} onClick={()=>{localStorage.setItem('post',JSON.stringify(post))}}>Read More</Link></button>
+						<button className="btn"><Link to={`/post/${post.id}`} onClick={()=>{localStorage.setItem('post',JSON.stringify(post))}}>Read More</Link></button>
 					</div>
 				</div>
 			)) : <h1>Loading</h1> }

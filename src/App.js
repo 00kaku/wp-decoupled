@@ -11,6 +11,7 @@ const App = ({postData,categories,totalPagesData}) =>{
 	const [pageNo,setPageNo] = useState(1);
 	const [totalPages,setTotalPages] = useState(totalPagesData);
 	const [categoriesArray,setCategoriesArray] = useState([]);
+	const [categoriesMenuFilter, setCategoriesMenuFilter]  = useState("categories__filter");
 
 	const updatePage = (newPage) => {
 		setPageNo(newPage);
@@ -50,31 +51,48 @@ const App = ({postData,categories,totalPagesData}) =>{
 					<Navbar />
 					<Switch>
 						<Route exact path="/">
+							<div className="filter__button">
+							<button 	className=''
+										onClick={()=>
+										{
+											categoriesMenuFilter === 'categories__filter' ?
+											setCategoriesMenuFilter('categories__filter show'):
+											setCategoriesMenuFilter('categories__filter')
 
-							<form onSubmit={updatePosts} className="categories__filter">
+											event.target.className === '' ?
+											event.target.className = 'selected':
+											event.target.className = ''
+										}}>CATEGORIES FILTERS</button>
+							</div>
+							<div className={categoriesMenuFilter}>
 								{
-									categories?.map(category => {
-										return (
-										<div key={category.id} className="category">
-										<input type="checkbox" value={category.id} onClick={event=>updateCategories(event,category.id)}/>
-										<label htmlFor={category.name}>{category.name}</label>
-										</div>
-										)
-
-									})
+									categories?.map(category =>(
+										<p key={category.id} className="category"
+										onClick={event=> {
+											event.target.className === "category" ?
+											event.target.className = "category selected":
+											event.target.className = "category"
+											updateCategories(event,category.id)
+											}}>{category.name}</p>
+										))
 								}
-								<input type="submit" />
-							</form>
+								<button className="btn"
+								 onClick={updatePosts}>Apply Filters </button>
+							</div>
 							<Posts posts={posts} />
 
 								<div className="pagination">
-									<button onClick={event=>{
+									<button
+									className="btn"
+									onClick={event=>{
 									const newPage = (pageNo - 1);
 									updatePage(newPage);
 									}}
 									disabled={pageNo === 1 }>Previous</button>
 
-									<button onClick={()=>{
+									<button
+									className="btn"
+									onClick={()=>{
 									const newPage = (pageNo + 1);
 									updatePage(newPage);}}
 									disabled={pageNo == totalPages }>Next</button>
