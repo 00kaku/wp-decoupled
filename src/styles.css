@@ -7,6 +7,10 @@
 *:focus{
 	outline:none;
 }
+
+*{
+	word-break: break-all;
+}
 .btn{
 	border: 1px solid #c0c0c0;
 	border-radius:50px;
