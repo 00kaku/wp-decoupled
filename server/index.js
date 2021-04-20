@@ -31,11 +31,6 @@ app.get('/', (req, res) => {
 			</StaticRouter>
 		);
 
-		if(context.url)
-		{ redirect(req.url)
-		}
-
-		else{
 		const indexFile = path.resolve('./build/index.html');
 
 		fs.readFile(indexFile, 'utf8', (err, data) => {
@@ -48,10 +43,14 @@ app.get('/', (req, res) => {
 				data.replace('<div id="root"></div>',`<div id="root">${app}</div>`)
 			);
 		});
-		}
 		})
 	});
 });
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
+
 
 app.use(express.static('./build'));
 

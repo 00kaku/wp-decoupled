@@ -2,6 +2,7 @@ const HtmlWebPackPlugin = require ('html-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const path = require("path");
 browserConfig= {
+	 entry: './src/index.js',
 	output :{
 		path: path.resolve(__dirname, "build"),
 		filename: "bundle.js"
