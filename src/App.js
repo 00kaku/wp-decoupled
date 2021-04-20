@@ -67,7 +67,8 @@ const App = ({postData,categories,totalPagesData}) =>{
 							<div className={categoriesMenuFilter}>
 								{
 									categories?.map(category =>(
-										<p key={category.id} className="category"
+										<p key={category.id}
+										className={`category ${categoriesArray.includes(category.id) ? 'selected':''}`}
 										onClick={event=> {
 											event.target.className === "category" ?
 											event.target.className = "category selected":
